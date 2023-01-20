@@ -27,26 +27,32 @@ def brodcast(msg,flag):
 
 
 def client_handle(conn:connection):
-    #recive mmesages from clients then brodcast them to all other clients
-    client_nick = "N/A"
-    while True:
-        msg , flag = conn.recv()
-        if flag == "leave" :
-            break
-            pass
-        elif flag == "nick":
-            client_nick = msg
-            print(f"conn : {conn} , nickname : {client_nick}")
-            brodcast(f"<server> {client_nick} joined","msg")
-        elif flag == "msg":
-            msg = f"[{client_nick}] : {msg}"
-            brodcast(msg,flag)
-    # on client leave , remove client form list of clients :
+    try:
+        #recive mmesages from clients then brodcast them to all other clients
+        client_nick = "N/A"
+        while True:
+            msg , flag = conn.recv()
+            if flag == "leave" :
+                break
+                pass
+            elif flag == "nick":
+                client_nick = msg
+                print(f"conn : {conn} , nickname : {client_nick}")
+                brodcast(f"<server> {client_nick} joined","msg")
+            elif flag == "msg":
+                msg = f"[{client_nick}] : {msg}"
+                brodcast(msg,flag)
+        # on client leave , remove client form list of clients :
+    except:
+        pass
 
     clients.pop(clients.index(conn))
     print(f"client '{client_nick}' discconected")
     brodcast(f"<server> {client_nick} left","msg")
-    conn.close()
+    try:
+        conn.close()
+    except:
+        pass
     pass
 
 
