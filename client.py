@@ -52,7 +52,7 @@ def send(msg):
 # _________-------- WINDOW -----------_________#
 
 
-Colour_palet = ["001b2e","294c60","adb6c4","ffc49b","ffefd3"]#["407076","698996","97b1a6","c9c5ba","000000"]#["434a42","aca885","e1ca96","918b76","626c66"]#["407076","698996","97b1a6","c9c5ba","000000"]#["2d3142","bfc0c0","ffffff","4f5d75","ef8354"]
+Colour_palet = ["071013","aaaaaa","dfe0e2","b7999c","eb5160"]
 
 colour_dic = {
     "background" : "#"+Colour_palet[0],
