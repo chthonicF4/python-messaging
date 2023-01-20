@@ -53,6 +53,7 @@ def send(msg):
 
 
 Colour_palet = ["000000","14213d","707070","c2c2c2","fca311"]
+font = "Verdana"
 
 colour_dic = {
     "background" : "#"+Colour_palet[0],
@@ -93,8 +94,8 @@ root.config(
 
 # config
 size = 20
-send_box_font = ("comic sans",size)
-send_button_font = ("comic sans",size - 5)
+send_box_font = (font,size)
+send_button_font = (font,size - 5)
 
 # frame
 send_bar  = tk.Frame(
@@ -143,7 +144,7 @@ send_button.grid(column=1,row=0,padx=10)
 
 # font
 
-chat_box_font = ("arial",size-5)
+chat_box_font = (font,size-5)
 
 # chat box frame
 chat_box = tk.Frame(
