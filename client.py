@@ -58,7 +58,8 @@ def send(msg):
 # _________-------- WINDOW -----------_________#
 
 
-Colour_palet = ["071013","aaaaaa","dfe0e2","b7999c","eb5160"]
+Colour_palet = ["000000","14213d","707070","c2c2c2","fca311"]
+font = "Verdana"
 
 colour_dic = {
     "background" : "#"+Colour_palet[0],
@@ -68,7 +69,7 @@ colour_dic = {
     "text" : "#"+Colour_palet[4]
 }
 
-def send():
+def send(*args):
     msg = send_box.get()
     send_box.delete(0,len(send_box.get()))
     if msg == "\leave" :
@@ -99,17 +100,19 @@ root.config(
 
 # config
 size = 20
-send_box_font = ("comic sans",size)
-send_button_font = ("comic sans",size - 5)
+send_box_font = (font,size)
+send_button_font = (font,size - 5)
 
 # frame
 send_bar  = tk.Frame(
     master=root,
     width=root.winfo_width(),
     height=20,
-    bg=colour_dic.get("forground"),
+    bg=colour_dic.get("background"),
     border=0
     )
+
+
 
 # text box
 send_box = tk.Entry(
@@ -125,6 +128,7 @@ send_box = tk.Entry(
 send_bar.columnconfigure(0,weight=1,minsize=100)
 send_box.grid(column=0,row=0,padx=10)
 
+send_box.bind('<Return>',send)
 
 # send button
 send_button = tk.Button(
@@ -146,12 +150,12 @@ send_button.grid(column=1,row=0,padx=10)
 
 # font
 
-chat_box_font = ("arial",size-5)
+chat_box_font = (font,size-5)
 
 # chat box frame
 chat_box = tk.Frame(
     master=root,
-    bg=colour_dic.get("forground"),
+    bg=colour_dic.get("background"),
     width=root.winfo_width(),
     height=200
     )
