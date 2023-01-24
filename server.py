@@ -25,6 +25,11 @@ def brodcast(msg,flag):
         client.send(msg,flag)
     pass
 
+def server_input():
+    while True:
+        brodcast(str(input(">>")),"cmd")
+
+threading.Thread(target=server_input).start()
 
 def client_handle(conn:connection):
     try:
